@@ -1,0 +1,21 @@
+@use "sass:math";
+
+// For a max 960px 12 column grid
+
+$gap-width: 20px;
+$grid-with: 720px;
+
+@mixin main_grid($column_count: 12) {
+  display: grid;
+  grid-template-columns: repeat($column_count, math.div($grid-with, $column_count));
+  column-gap: $gap-width;
+  row-gap: $gap-width;
+
+  @for $i from 1 to $column_count {
+    .column-span-#{$i} {
+      grid-column-end: span $i;
+    }
+  }
+   
+
+}

@@ -1,0 +1,24 @@
+@use "sass:math";
+
+// For a fluid grid using floats
+
+$column-width: 60px;
+$gutter-width: 20px;
+
+@mixin clearfix {
+  &::after,
+  &::before {
+    content: "";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+
+@mixin span_float_grid($column-span: 12) {
+  float: left;
+  margin-right: $gutter-width;
+  width: ($column-width * $column-span) + ($gutter-width * ($span - 1));
+}
