@@ -18,7 +18,13 @@ $gutter-width: 20px;
 
 
 @mixin span_float_grid($column-span: 12) {
+  $context: $column-span * $column-width;
   float: left;
   margin-right: $gutter-width;
-  width: ($column-width * $column-span) + ($gutter-width * ($span - 1));
+  $absolute_width: ($column-width * $column-span) + ($gutter-width * ($span - 1));
+  @if $column-span == 12 {
+    width: $absolute_width;
+  } @else {
+    width: math.div($absolute_width, $context) * 100%;
+  }
 }
